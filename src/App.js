@@ -1,6 +1,4 @@
-import Sidebar from './Sidebar.js'
-import Titlebar from './Titlebar.js';
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import TodoList from './TodoList'
 import { v4 as uuidv4 } from 'uuid'
@@ -8,20 +6,6 @@ import Login from './Login.js';
   
 // function App() {
 
-//   const [joke, setJoke] = useState("")
-//   const getJoke = () => {
-//     fetch("https://official-joke-api.appspot.com/random_joke").then((response) => response.json()).then((data) => {
-//       setJoke(data.setup + "..." + data.punchline);
-//     })
-//   }
-//   return (
-//     <div>
-//       <Stylesheet/>
-//       <button onClick = {getJoke}>Get Joke Right Now</button>{joke}
-//       <button button = "first">NEW</button>
-//     </div>
-//   )
-// }
 function App() {
   const[todos, setTodos] = useState([])
   const todoNameRef = useRef()
