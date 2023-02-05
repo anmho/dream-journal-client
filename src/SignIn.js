@@ -1,8 +1,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import UserService from "./services/user";
 
-export default function MyModal() {
-  let [isOpen, setIsOpen] = useState(true);
+export default function SignIn({ setLoggedIn }) {
+  let [isOpen, setIsOpen] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   function closeModal() {
     setIsOpen(false);
@@ -11,6 +14,12 @@ export default function MyModal() {
   function openModal() {
     setIsOpen(true);
   }
+
+  const handleSubmit = async () => {
+    console.log(username, password);
+    await UserService.loginUser(username, password);
+    setLoggedIn(true);
+  };
 
   return (
     <>
@@ -71,20 +80,28 @@ export default function MyModal() {
                     >
                       <p className="font-bold">Username:</p>
 
-                      <input className="border-2 border-black" type="text" />
+                      <input
+                        className="border-2 border-black"
+                        type="text"
+                        onChange={(e) => setUsername(e.target.value)}
+                      />
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-lg font-medium leading-6 text-gray-900">
                         <p className="font-bold">Password:</p>
-                        <input className="border-2 border-black" type="text" />
+                        <input
+                          className="border-2 border-black"
+                          type="password"
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
                       </p>
                     </div>
 
                     <div className="mt-4">
                       <button
                         type="button"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-16 py-8 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        onClick={closeModal}
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={handleSubmit}
                       >
                         Sign In
                       </button>

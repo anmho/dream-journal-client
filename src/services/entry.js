@@ -20,7 +20,6 @@ class EntryService {
       data[i].url = await ImageService.getEntry(`${data[i].image_id}/`);
     }
 
-
     return data;
   }
 

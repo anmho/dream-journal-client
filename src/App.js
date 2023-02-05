@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Home from "./screens/Home";
 import { v4 as uuidv4 } from "uuid";
-import SignIn from "./components/SignIn.js";
+// import SignIn from "./components/SignIn.js";
+// import SignIn from "./components/SignIn.js";
+import SignIn from "./SignIn";
 import UserService from "./services/user";
 
 // function App() {
@@ -21,7 +23,15 @@ function App() {
     // set loggedin
   }, []);
 
-  return <>{loggedIn ? <Home /> : <SignIn setLoggedIn={setLoggedIn} />}</>;
+  return (
+    <>
+      {loggedIn ? (
+        <Home setLoggedIn={setLoggedIn} />
+      ) : (
+        <SignIn setLoggedIn={setLoggedIn} />
+      )}
+    </>
+  );
 }
 
 export default App;

@@ -31,8 +31,7 @@ export default function AddEntryButton({ setEntries }) {
 
   const handleSubmit = async (e) => {
     // request a image url
-    e.preventDefault();
-    const { url } = await ImageService.postImage(title);
+    const { id, url } = await ImageService.postImage(description);
 
     // get image
 
@@ -40,16 +39,21 @@ export default function AddEntryButton({ setEntries }) {
       title,
       description,
       url,
+      image_id: id,
       created_by: await UserService.getUserId(),
     };
 
     // use image to create the entry
     await EntryService.addEntry(entry);
 
+    // setEntries((entries) => [...entries, entry]);
+
     // fetch new entries
     const entries = await EntryService.getEntries(UserService.getUserId());
+    console.log(entries);
+    console.log(entry);
 
-    setEntries(entries);
+    setEntries((entries) => [...entries, entry]);
 
     // close modal
 
