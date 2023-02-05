@@ -1,3 +1,5 @@
+import Sidebar from './Sidebar.js'
+import Titlebar from './Titlebar.js';
 import React, {useState, useRef} from 'react';
 import './App.css';
 import TodoList from './TodoList'
@@ -34,6 +36,9 @@ function App() {
   }
 
   return (
+    <>
+    <Titlebar />
+    <Sidebar />
     <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
       <p className="text-3xl text-gray-700 font-bold mb-5 text-right">
         Dream Journal
@@ -44,7 +49,7 @@ function App() {
       <p className="text-2xl text-gray-700 font-bold mb-5 text"> Entries</p>
       <TodoList todos ={todos}/>
     </div>
-
+    </>
     
   );
 }
