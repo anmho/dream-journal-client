@@ -1,5 +1,5 @@
 import React from "react";
-import { IoSettingsSharp } from "react-icons/io5";
+import { IoIosSettings } from "react-icons/io";
 
 export default function Sidebar() {
   return (
@@ -9,7 +9,7 @@ export default function Sidebar() {
           <div className="h-10 flex flex-row align-center justify-center">
             <p className="text-3xl font-bold text-white mr-4">Settings</p>
 
-            <IoSettingsSharp size={30} className="text-white h-full" />
+            <IoIosSettings size={30} className="text-white h-full" />
           </div>
         </div>
       </div>
