@@ -1,3 +1,5 @@
+import Sidebar from "./Sidebar.js";
+import Titlebar from "./Titlebar.js";
 import React, { useState, useRef } from "react";
 import "./App.css";
 import TodoList from "./TodoList";
@@ -33,20 +35,24 @@ function App() {
   }
 
   return (
-    <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-      <p className="text-3xl text-gray-700 font-bold mb-5 text-right">
-        Dream Journal
-      </p>
+    <>
+      <Titlebar />
+      <Sidebar />
+      <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
+        <p className="text-3xl text-gray-700 font-bold mb-5 text-right">
+          Dream Journal
+        </p>
 
-      <input ref={todoNameRef} type="text" />
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={handleAddTodo}
-      >
-        Button
-      </button>
-      <TodoList todos={todos} />
-    </div>
+        <input ref={todoNameRef} type="text" />
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleAddTodo}
+        >
+          Button
+        </button>
+        <TodoList todos={todos} />
+      </div>
+    </>
   );
 }
 
