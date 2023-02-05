@@ -41,6 +41,7 @@ function App() {
 
       <input ref = {todoNameRef} type = "text"/>
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick = {handleAddTodo}>Button</button>
+      <p className="text-2xl text-gray-700 font-bold mb-5 text"> Entries</p>
       <TodoList todos ={todos}/>
     </div>
 
