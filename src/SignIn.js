@@ -20,6 +20,26 @@ export default function MyModal() {
         </h1>
       
 
+        <div className="fixed inset-0 flex items-center justify-center mt-60">
+          <button
+            type="button"
+            onClick={openModal}
+            className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 h-20 w-40 drop-shadow-2xl"
+          >
+            <div className="border-0 font-bold text-2xl">
+              Sign Up
+            </div>
+
+
+            
+          </button>
+
+          
+
+
+          
+        </div>
+        
         <div className="fixed inset-0 flex items-center justify-center">
           <button
             type="button"
@@ -29,10 +49,20 @@ export default function MyModal() {
             <div className="border-0 font-bold text-2xl">
               Sign In
             </div>
+
+
             
           </button>
-        </div>
 
+          
+
+
+          
+        </div>
+    
+        
+
+        
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={closeModal}>
             <Transition.Child
@@ -83,6 +113,7 @@ export default function MyModal() {
                       >
                         Sign In
                       </button>
+                      
                     </div>
                   </Dialog.Panel>
                 </Transition.Child>
