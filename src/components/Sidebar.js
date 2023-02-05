@@ -1,5 +1,6 @@
 import React from "react";
 import { IoIosSettings } from "react-icons/io";
+import UserService from "../services/user";
 
 export default function Sidebar() {
   return (
@@ -11,6 +12,14 @@ export default function Sidebar() {
 
             <IoIosSettings size={30} className="text-white h-full" />
           </div>
+        </div>
+        <div className="flex align-center justify-center">
+          <button
+            className="text-3xl  text-white bg-sky-400 rounded-full py-2 px-4 hover:cursor-pointer"
+            onClick={() => console.log("hello")}
+          >
+            Sign Out
+          </button>
         </div>
       </div>
     </>

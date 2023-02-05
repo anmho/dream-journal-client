@@ -1,61 +1,27 @@
-<<<<<<< HEAD
-import Sidebar from './Sidebar.js'
-import Titlebar from './Titlebar.js';
-import React, {useState, useRef} from 'react';
-import './App.css';
-import TodoList from './TodoList'
-import { v4 as uuidv4 } from 'uuid'
-import SignIn from './SignIn'
-  
-// function App() {
-=======
-import Sidebar from "./components/Sidebar.js";
-import Titlebar from "./components/Titlebar.js";
-import React, { useState, useRef } from "react";
-import EntryList from "./components/EntryList.js";
+import React, { useState, useEffect } from "react";
+import Home from "./screens/Home";
 import { v4 as uuidv4 } from "uuid";
-import Home from "./screens/Home.js";
->>>>>>> 2cee48967391b5b48513614389e12b18c5e00e5c
+import SignIn from "./components/SignIn.js";
+import UserService from "./services/user";
+
+// function App() {
 
 function App() {
-<<<<<<< HEAD
-  const[todos, setTodos] = useState([])
-  const todoNameRef = useRef()
+  const [loggedIn, setLoggedIn] = useState(false);
 
+  useEffect(() => {
+    // check if token exists
+    const user_id = localStorage.getItem("user_id");
 
-  function handleAddTodo(e){
-    const name = todoNameRef.current.value
-    if(name === '') return
-    setTodos(prevTodos =>{
-      return[...prevTodos,{id: uuidv4(), name: name, complete: false}]
-    })
-    todoNameRef.current.value = null
-  }
+    setLoggedIn(UserService.isLoggedIn());
 
-  return (
-    <>
-    <SignIn/>
+    // check if token is not expired
 
-  
-    {/* <Titlebar />
-    <Sidebar />
-    <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-      <p className="text-3xl text-gray-700 font-bold mb-5 text-right">
-        Dream Journal
-      </p>
+    // get user
+    // set loggedin
+  }, []);
 
-      <input ref = {todoNameRef} type = "text"/>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick = {handleAddTodo}>Button</button>
-      <p className="text-2xl text-gray-700 font-bold mb-5 text"> Entries</p>
-      <TodoList todos ={todos}/>
-    </div> */}
-    </>
-    
-  );
-=======
-  const [loggedIn, setLoggedIn] = useState(true);
-  return <>{loggedIn && <Home />}</>;
->>>>>>> 2cee48967391b5b48513614389e12b18c5e00e5c
+  return <>{loggedIn ? <Home /> : <SignIn setLoggedIn={setLoggedIn} />}</>;
 }
 
 export default App;

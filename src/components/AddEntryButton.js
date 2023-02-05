@@ -1,9 +1,13 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { BsPlus } from "react-icons/bs";
+import ImageService from "../services/images";
+import EntryService from "../services/entry";
+import UserService from "../services/user";
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
-export default function AddEntryButton() {
-  const [isOpen, setIsOpen] = useState(true);
+export default function AddEntryButton({ setEntries }) {
+  const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
 
@@ -14,6 +18,43 @@ export default function AddEntryButton() {
   function openModal() {
     setIsOpen(true);
   }
+
+  const handleChangeTitle = (e) => {
+    console.log(title);
+    setTitle(e.target.value);
+  };
+
+  const handleChangeDescription = (e) => {
+    console.log(description);
+    setDescription(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    // request a image url
+    e.preventDefault();
+    const { url } = await ImageService.postImage(title);
+
+    // get image
+
+    const entry = {
+      title,
+      description,
+      url,
+      created_by: await UserService.getUserId(),
+    };
+
+    // use image to create the entry
+    await EntryService.addEntry(entry);
+
+    // fetch new entries
+    const entries = await EntryService.getEntries(UserService.getUserId());
+
+    setEntries(entries);
+
+    // close modal
+
+    closeModal();
+  };
 
   return (
     <>
@@ -69,6 +110,7 @@ export default function AddEntryButton() {
                     </label>
 
                     <input
+                      onChange={handleChangeTitle}
                       className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
       disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
@@ -79,6 +121,7 @@ export default function AddEntryButton() {
                       Description
                     </label>
                     <textarea
+                      onChange={handleChangeDescription}
                       className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
       disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
@@ -98,7 +141,7 @@ export default function AddEntryButton() {
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>
