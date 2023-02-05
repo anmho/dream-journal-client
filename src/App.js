@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import Sidebar from './Sidebar.js'
+import Titlebar from './Titlebar.js';
 import './App.css';
   
 // function App() {
@@ -22,7 +24,10 @@ function App() {
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Button</button>
   }
   return (
-    <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
+    <>
+    <Titlebar />
+    <Sidebar />
+    {/* <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
       <p className="text-3xl text-gray-700 font-bold mb-5">
         Welcome!
       </p>
@@ -30,12 +35,11 @@ function App() {
         React and Tailwind CSS in action
       </p>
 
-      {/* <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Button</button> */}
+      { <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Button</button> }
       {button}
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Button</button>
-      
-    </div>
-
+    </div> */}
+    </>
     
   );
 }
