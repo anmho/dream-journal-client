@@ -1,24 +1,15 @@
-<<<<<<< HEAD
-import Sidebar from './Sidebar.js'
-import Titlebar from './Titlebar.js';
+//import Sidebar from './Sidebar.js'
+//import Titlebar from './Titlebar.js';
 import React, {useState, useRef} from 'react';
-import './App.css';
-import TodoList from './TodoList'
+//ls
+//import './App.css';
+//import TodoList from './TodoList'
 import { v4 as uuidv4 } from 'uuid'
 import SignIn from './SignIn'
   
-// function App() {
-=======
-import Sidebar from "./components/Sidebar.js";
-import Titlebar from "./components/Titlebar.js";
-import React, { useState, useRef } from "react";
-import EntryList from "./components/EntryList.js";
-import { v4 as uuidv4 } from "uuid";
-import Home from "./screens/Home.js";
->>>>>>> 2cee48967391b5b48513614389e12b18c5e00e5c
+
 
 function App() {
-<<<<<<< HEAD
   const[todos, setTodos] = useState([])
   const todoNameRef = useRef()
 
@@ -52,10 +43,6 @@ function App() {
     </>
     
   );
-=======
-  const [loggedIn, setLoggedIn] = useState(true);
-  return <>{loggedIn && <Home />}</>;
->>>>>>> 2cee48967391b5b48513614389e12b18c5e00e5c
 }
 
 export default App;
