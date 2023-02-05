@@ -1,15 +1,18 @@
-import React from 'react'
+import React from "react";
+import { IoSettingsSharp } from "react-icons/io5";
 
 export default function Sidebar() {
   return (
     <>
-    <div className="fixed justify-start h-screen w-1/6 bg-[#01002C] p-8">
-        <p className="text-3xl text-white font-bold mb-5 color-white">
-            Settings        
-            <img src="pngegg.png" height="30" width="30" margin-left/>
-        </p>
+      <div className="fixed top-0 left-0 h-screen w-1/6 bg-gradient-to-t from-[#6C27A2] to-[#01002C]">
+        <div className="flex flex-row align-center justify-center w-full h-content p-4">
+          <div className="h-10 flex flex-row align-center justify-center">
+            <p className="text-3xl font-bold text-white mr-4">Settings</p>
 
-    </div>
+            <IoSettingsSharp size={30} className="text-white h-full" />
+          </div>
+        </div>
+      </div>
     </>
-  )
+  );
 }
